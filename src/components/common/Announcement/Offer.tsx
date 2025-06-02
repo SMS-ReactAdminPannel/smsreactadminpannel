@@ -21,7 +21,7 @@ const offers = [
 
 const Offer = ({
   showModal,
-  closeModal,
+   closeModal,
 }: {
   showModal: boolean;
   closeModal: () => void;
