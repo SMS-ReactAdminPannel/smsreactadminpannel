@@ -43,3 +43,4 @@ const AnnouncementList = () => (
 );
 
 export default AnnouncementList;
+ 

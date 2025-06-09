@@ -1,3 +1,4 @@
+import { data } from "react-router-dom";
 import httpClient from "./httpClient";
 import { API_END_POINTS } from "./httpEndpoints";
 
@@ -28,11 +29,19 @@ admin={
     getAll:(params:string)=>httpClient.get(API_END_POINTS.sos.GetAll,params,)
    },
 
-
+   auth:{
+    Post:(data:any,params?:any)=>httpClient.post(API_END_POINTS.auth.Post,data,params,),
+        //"/api/admin/auth/forget-pass",
+    POstotp:(data:any,params:string)=>httpClient.post(API_END_POINTS.auth.POstotp,data,params),
+    //"/api/admin/auth/verfiy-otp",
+    Postreset:(data:any,params:string)=>httpClient.post(API_END_POINTS.auth.Postreset,data,params)
+    //"/api/admin/auth/reset-pass/:id",
+   },
+   }
 }
 
 
-}
+
 
 
 
