@@ -10,15 +10,15 @@ export const API_END_POINTS ={
 
 
     jobcard:{
-            Post:"/api/jobcards",
-            Get:"/api/jobcards",
-            GetAll:"/api/jobcards/:id",
-            Put:"/api/jobcards/:id",
+            Post:"/api/jobcardscreateCard",
+            Get:"/api/jobcards/getOne/:id",
+            GetAll:"/api/jobcards/getAll",
+            Put:"/api/jobcards/updateCard/:id",
     } ,
 
     
    vechiclemanage:{
-            Get:"/api/admin/vehicleManage/",
+            Get:"/api/vehicle/getall/",
    }  ,
 
    
@@ -37,7 +37,7 @@ export const API_END_POINTS ={
     Post:"/api/sos/add",
     GetAll:"/api/sos/getall",
     Get:"/api/sos/get/:id",
-    Put:"/api/sos/update/:id"
+    Put:"/api/sos/update/"
    },
 
    profile:{
@@ -49,25 +49,25 @@ export const API_END_POINTS ={
 
    auth:{
     Post:"/api/admin/auth/forget-pass",
-    POstotp:"/api/admin/auth/verfiy-otp",
+    Postotp:"/api/admin/auth/verfiy-otp",
     Postreset:"/api/admin/auth/reset-pass/:id",
    },
 
    notification:{
-    create:"/api/admin/notification/",
-    createBulk:"/api/admin/notification/bulk",
-    getByUser:"/api/admin/notification/user/:userId",
-    getUnreadCount:"/api/admin/notification/user/:userId/unread-count",
-    markAsRead:"/api/admin/notification/read/:uuid",
-    markAllAsRead:"/api/admin/notification/read-all/:userId",
-    Getstats:"/api/admin/notification/stats/:userId",
-    delete:"/api/admin/notification/:uuid",
-    getall:"/api/admin/notification/",
-    GetById:"/api/admin/notification/:uuid",
-    update:"/api/admin/notification/:uuid",
-    postperferenceCreateOrUpdate:"/api/admin/notification/preferences",
-    putpreferenceCreateOrUpdate:"/api/admin/notification/preference",
-    getPreferenceGet:"/api/admin/preferences/:userId",
+    create:"/api/notifications/",
+    createBulk:"/api/notifications/bulk",
+    getByUser:"/api/notifications/user/:userId",
+    getUnreadCount:"/api/notifications/user/:userId/unread-count",
+    markAsRead:"/api/notifications/read/:uuid",
+    markAllAsRead:"/api/notifications/read-all/:userId",
+    Getstats:"/api/notifications/stats/:userId",
+    delete:"/api/notifications/:uuid",
+    getall:"/api/notifications/",
+    GetById:"/api/notifications/:uuid",
+    update:"/api/notifications/:uuid",
+    postperferenceCreateOrUpdate:"/api/notifications/preferences",
+    putpreferenceCreateOrUpdate:"/api/notifications/preference",
+    getPreferenceGet:"/api/preferences/:userId",
    },
 
    spareparts:{
@@ -78,6 +78,13 @@ export const API_END_POINTS ={
     updatestatus:"/api/admin/spareparts/updatestatus/:id",
     delete:"/api/admin/spareparts/delete/:id",
    },
+
+   serviceCenter:{
+     getAll: "/api/admin/servicecenter/getall",
+     getAllCat: "/api/admin/category/getAll/:uuid",
+     postPartner: "/api/partner/auth/register",
+     updatePatner: "/api/partner/auth/update/:id",
+    }
 
 
 

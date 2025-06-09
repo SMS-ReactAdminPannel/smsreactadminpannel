@@ -2,11 +2,10 @@
 import Client from "../../../api";
 
 
-export const sos =async (data:any)=>{
+export const getsos =async (data:any)=>{
     try{ 
-        const response =  await new Client().admin.sos.get(data)
-        // const data= <response />;
-        console.log(response);
+        const response:any =  await new Client().admin.sos.get(data)
+        return response.data
     }
     catch(error)
     {
@@ -15,10 +14,11 @@ export const sos =async (data:any)=>{
     }
 }
 
-export const  getallSos= async (data:any)=>{
+export const  getallSos= async ()=>{
     try{
-        const response = await new Client().admin.sos.getAll(data)
+        const response = await new Client().admin.sos.getAll()
         console.log(response);
+        return response
     }
     catch(error){
         console.log('Error fetching data:',error);
@@ -28,17 +28,18 @@ export const  getallSos= async (data:any)=>{
 export const updatesos = async (data:any,params:string)=>{
     try{
         const response = await new Client().admin.sos.put(data,params)
-        console.log(response);
+        return response
     }
     catch(error){
         console.log('Error fetching data:',error);
     }
 }
 
-export const postSos = async (data:any,params:string)=>{
+export const postSos = async (data:any)=>{
     try{
-        const response = await new Client().admin.sos.post(data,params)
+        const response = await new Client().admin.sos.post(data)
         console.log(response);
+        return response
     }
     catch(error){
         console.log('Error fetching data:',error);
