@@ -19,7 +19,7 @@ admin={
     postpreferenceCreateOrUpdate:(data:string)=>httpClient.post(API_END_POINTS.notification.postperferenceCreateOrUpdate,data),
     putpereferenceCreateOrUpdate:(data:string,params:string)=>httpClient.update(API_END_POINTS.notification.putpreferenceCreateOrUpdate,params,data),
     getpreferenceGet:(data:string)=>httpClient.get(API_END_POINTS.notification.getPreferenceGet,data,),
-    update:(data:string,params:string)=>httpClient.update(API_END_POINTS.notification.update,params,data),
+    update:(params?:string)=>httpClient.update(API_END_POINTS.notification.update.replace(':uuid', params.uuid), params,''),
 
 },
 
@@ -47,7 +47,7 @@ spareparts:{
 auth:{
   post:(data:any)=>httpClient.post(API_END_POINTS.auth.Post,data),
   postotp:(data:any)=>httpClient.post(API_END_POINTS.auth.Postotp,data,),
-  postreset:(data:any)=>httpClient.post(API_END_POINTS.auth.Postreset,data,)  
+  postreset:(data:any)=>httpClient.update(API_END_POINTS.auth.Postreset,data,),
 },
 
 profile:{
@@ -61,7 +61,7 @@ profile:{
 enquiry:{
     post:(data:string)=>httpClient.post(API_END_POINTS.enquiry.Post,data,),
     get:(params:string)=>httpClient.get(API_END_POINTS.enquiry.Get,params),
-    put:(data:string,params:string)=>httpClient.update(API_END_POINTS.enquiry.Put,data,params)
+    put:(params:string)=>httpClient.update(API_END_POINTS.enquiry.Put.replace(":uuid",params),params)
 },
 
  vechiclemanage:{
@@ -87,13 +87,10 @@ enquiry:{
   postPartner:(data:any)=>httpClient.post(API_END_POINTS.serviceCenter.postPartner,data),
   update:(data:any,params:string)=>httpClient.update(API_END_POINTS.serviceCenter.updatePatner.replace(':id',params),data,'')
  }
-
-
+}
 }
 
 
 
 
-
-
-export default Client;
+export default Client

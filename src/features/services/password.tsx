@@ -12,7 +12,7 @@ import Client from "../../api";
 
 export const changePassword = async (data:string) => {
     try{
-    const response = await new Client() .admin.auth.Post(data);
+    const response = await new Client() .admin.auth.postreset(data);
     return response;
     }
     catch(error){

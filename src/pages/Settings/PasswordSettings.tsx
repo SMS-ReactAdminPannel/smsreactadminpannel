@@ -32,7 +32,7 @@ const PasswordSettings = () => {
       const payload = { oldPassword, newPassword};
       const res = await changePassword(payload); // Replace with actual API call
       console.log(res,"response")
-      if (res?.success) {
+       if (res?.success) {
         setSuccess("Password changed successfully.");
         setOldPassword("");
         setNewPassword("");

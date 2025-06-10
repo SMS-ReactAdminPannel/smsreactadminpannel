@@ -1,4 +1,4 @@
-// import React from 'react'
+ import React from 'react'
 
 //import AutomatedNotifications from '../../components/common/Notification/AutomatedNotifications.tsx'
 //import NotificationsLogs from '../../components/common/Notification/NotificationsLogs.tsx'
@@ -13,8 +13,10 @@ import { FaArrowLeft } from 'react-icons/fa';
 export const NotificationPage = () => {
   const navigate = useNavigate();
 
+
   return (
     <div className="flex flex-col p-4">
+      
       <div className='flex flex-row item-center gap-5'>
         <button
         onClick={() => navigate('/')}
@@ -30,4 +32,4 @@ export const NotificationPage = () => {
     </div>
   );
 };
-
+ 

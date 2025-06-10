@@ -24,9 +24,9 @@ export const DeleteNotification = async ()=>{
 
 }  
 
-export const  updateNotification = async (data:string,params:string)=>{
+export const updateNotification = async (params:string)=>{
     try{
-        const response = await new Client().admin.notification.update(data,params)
+        const response = await new Client().admin.notification.update(params)
        return response;
         // console.log(response);
     }

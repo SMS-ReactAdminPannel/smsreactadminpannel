@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FaBell } from "react-icons/fa";
-import { getAllNotification } from './services';
+import { getAllNotification, updateNotification } from './services';
 
 // Define the shape of a notification object
 interface Notification {
@@ -54,17 +54,18 @@ const NotificationPanel: React.FC = () => {
     fetchUserNotifications();
   }, []);
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: any) => {
     setNotifications((prev) => prev.filter((n) => n._id !== id));
   };
 
-  const handleMarkAsRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((notif) =>
-        notif._id === id ? { ...notif, is_read: true } : notif
-      )
-    );
-    // Optionally trigger backend update here
+  const handleMarkAsRead = async (id: string) => {
+    try {
+      // const params = 
+      const response = await updateNotification({uuid:id})
+      console.log(response, 'response')
+    } catch (error) {
+      console.log(error.message)
+    }
   };
 
   const filteredNotifications = notifications.filter((notif) => {
@@ -129,7 +130,7 @@ const NotificationPanel: React.FC = () => {
             >
               <div
                 className="flex items-start gap-3 cursor-pointer"
-                onClick={() => handleMarkAsRead(notif._id)}
+                onClick={() => handleMarkAsRead(notif.uuid)}
               >
                 <span className={`text-lg mt-1 ${notif.type === 'error' ? 'text-red-500' : 'text-gray-400'}`}>
                   {notif.type === 'error' ? '⚠️' : <FaBell className="text-[#9b111e]" />}
@@ -155,7 +156,7 @@ const NotificationPanel: React.FC = () => {
                     {formatDate(notif.created_at)}
                   </p>
                   <button
-                    onClick={() => handleDelete(notif._id)}
+                    onClick={() => handleDelete(notif.uuid)}
                     className="bg-red-100 text-red-500 px-2 py-1 rounded text-sm hover:bg-red-200"
                   >
                     Delete

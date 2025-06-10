@@ -6,7 +6,7 @@ export const getProfile=async () => {
         return response.data
     } catch (error) {
         console.log(error)
-    }
+     }
 }
 
 export const updateProfile=async (data:any) => {

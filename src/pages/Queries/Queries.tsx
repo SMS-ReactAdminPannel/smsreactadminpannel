@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import { QueryCard } from "../../components/common/dashboard/QueryCard/QueryCard";
 import dummpypic from "../../assets/Dashboard/images.jpg";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { getQueries } from "../../features/Queries/service";
+import { getQueries, updateQueries } from "../../features/Queries/service";
+
+
+
+
+
 
 type Query = {
   _id: number;
@@ -71,20 +76,21 @@ const Queries = () => {
   const [selectedQuery, setSelectedQuery] = useState<Query | null>(null);
   const [filter, setFilter] = useState<"All" | "Unread" | "Read">("All");
 
-  const handleSelectQuery = (query: Query) => {
-    if (!query.isRead) {
-      const updatedQueries = queries.map((q) =>
-        q._id === query._id ? { ...q, isRead: true } : q
-      );
-      setQueries(updatedQueries);
+  const handleSelectQuery = async(uuid:string) => {
+    try {
+      const response = await updateQueries(uuid)
+      console.log(response,"respose")
+    } catch (error) {
+      console.log(error)
     }
-    setSelectedQuery(query);
-  };
+
+  
+  }
 
   const filteredQueries = queries.filter((q) => {
     if (filter === "All") return true;
-    if (filter === "Unread") return !q.isRead;
-    if (filter === "Read") return q.isRead;
+    if (filter === "Unread") return !q.isRead ;
+    if (filter === "Read") return q.isRead  ;
     return true;
   });
 
@@ -155,8 +161,8 @@ const Queries = () => {
         )}
         {filteredQueries.map((q) => (
           <div
-            key={q._id}
-            onClick={() => handleSelectQuery(q)}
+            key={q._id} 
+            onClick={() => handleSelectQuery(q.uuid)}
             className={`rounded-lg shadow-sm cursor-pointer border-l-4 border-[#9b111e] transition-all duration-200 ${
               q.isRead 
                 ? " bg-[#f5f3f1] hover:bg-[#f2f1ef] " 
